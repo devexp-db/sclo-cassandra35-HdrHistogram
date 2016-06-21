@@ -1,5 +1,5 @@
 Name:          HdrHistogram
-Version:       2.1.8
+Version:       2.1.9
 Release:       1%{?dist}
 Summary:       A High Dynamic Range (HDR) Histogram
 License:       BSD and CC0
@@ -10,6 +10,8 @@ BuildRequires: maven-local
 BuildRequires: mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires: mvn(junit:junit)
 BuildRequires: mvn(org.sonatype.oss:oss-parent:pom:)
+# fedora 25
+BuildRequires: mvn(org.apache.felix:maven-bundle-plugin)
 
 BuildArch:     noarch
 
@@ -42,7 +44,6 @@ find  -name "*.jar"  -print -delete
 %mvn_file :%{name} %{name}
 
 %build
-
 %mvn_build
 
 %install
@@ -59,6 +60,9 @@ find  -name "*.jar"  -print -delete
 %license COPYING.txt LICENSE.txt
 
 %changelog
+* Tue Jun 21 2016 Tomas Repik <trepik@redhat.com> - 2.1.9-1
+- Update to 2.1.9
+
 * Mon Mar 07 2016 Tomas Repik <trepik@redhat.com> - 2.1.8-1
 - launcher HistogramLogProcessor installation
 - Update to 2.1.8
